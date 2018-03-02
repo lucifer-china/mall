@@ -17,8 +17,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><router-link href="#" :to="{name:'prolist'}">商品列表 <span class="sr-only">(current)</span></router-link></li>
-            <li><router-link :to="{name:'details'}" href="#">商品详情</router-link></li>
-            <li><a href="#">我的订单</a></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
