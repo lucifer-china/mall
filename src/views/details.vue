@@ -43,27 +43,32 @@
         </div>
         <div class="your-choose">
           <label>数量</label>
-          <span class="num-btn">-</span>
-          <span>1</span>
-          <span class="num-btn">+</span>
+          <span class="num-btn" @click="minusNumber">-</span>
+          <span>{{count}}</span>
+          <span class="num-btn" @click="addNumber">+</span>
         </div>
         <div class="btn-wrap">
-          <button class="btn btn-primary">加入购物车</button>
+          <button class="btn btn-primary" @click="addPayCar()">加入购物车</button>
           <button class="btn btn-default">现在购买</button>
         </div>
       </div>
     </div>
+    <!--超出最大数量弹窗组件-->
+    <popmaxprice class="modal fade" tabindex="-1" role="dialog" id="maxPrice"></popmaxprice>
   </section>
 </template>
 
 <script>
 import itemsData from './../lib/newItemsData'
+import popMaxprice from './../components/popMaxPrice.vue'
 export default {
   data () {
     return {
       itemsData,
       proId: this.$route.query.productId,
-      imgCur: 0
+      imgCur: 0,
+      // 数量变量
+      count: 1
     }
   },
   // 监控颜色的变化，重新赋值
@@ -86,7 +91,31 @@ export default {
     // 点击切换选中的图片
     changeCur (index) {
       this.imgCur = index
+    },
+    // 加入购物车方法
+    addPayCar () {
+      let productData = {
+        info: this.productId,
+        count: this.count
+      }
+      this.$store.commit('addCarData', productData)
+    },
+    addNumber () {
+      this.count++
+      if (this.count > 5) {
+        this.count = 5
+      }
+    },
+    minusNumber () {
+      this.count--
+      if (this.count < 1) {
+        this.count = 1
+      }
     }
+
+  },
+  components: {
+    popmaxprice: popMaxprice
   }
 }
 </script>

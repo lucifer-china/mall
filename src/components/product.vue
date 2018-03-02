@@ -35,11 +35,17 @@
         }
       },
       methods: {
+        // 切换颜色选择方法
         tableData (index) {
           this.itemIndex = index
         },
+        // 加入购物车方法
         addPayCar (data) {
-          this.$store.commit('addCarData', data)
+          let productData = {
+            info: data,
+            count: 1
+          }
+          this.$store.commit('addCarData', productData)
         }
       }
     }

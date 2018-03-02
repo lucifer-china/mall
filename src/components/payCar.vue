@@ -27,7 +27,7 @@
             <p class="txt-grey">共{{totleCount}}件商品</p>
             <p>合计：<span class="txt-red">￥ {{totlePrice}} 元</span></p>
           </div>
-          <button type="button" class="btn btn-primary pull-right">去结算</button>
+          <router-link tag="button" class="btn btn-primary pull-right" to="/paycar">去购物车</router-link>
         </section>
       </div>
     </section>
